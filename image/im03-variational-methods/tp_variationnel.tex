@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage[a4paper, total={7.5in, 10in}]{geometry}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{lipsum}
+
+\title{TP de méthodes variationnelles}
+\author{Felipe Vicentin}
+
+\begin{document}
+    \maketitle
+
+    \section{Débruitage par régularisation quadratique}
+
+    \subsubsection*{Question 1}
+    Comment utiliser l’outil \textbf{resoud\_quad\_fourier} pour trouver le minimiseur de cette énergie (voir le programme \textbf{minimisation\_quadratique})?
+
+    \paragraph{Answer}
+    The python function \texttt{resoud\_quad\_fourier} takes as arguments $(K, V)$, where $K$ is a vector of $n$ kernels and $V$ is a vector of $n$ images. Then, it returns
+    \[
+        U = \arg \min_u \sum_{i = 1}^n \| K_i \ast u - V_i \|^2
+    \]
+    We can make use of \texttt{resoud\_quad\_fourier} to find the image that minimizes the energy by rewritting the quadratic energy function as the function above.
+    Particularly,
+    \begin{align*}
+        \lambda \| \nabla u \|^2 &= \lambda \| \partial_x u \|^2 + \lambda \| \partial_y u \|^2 \\
+        &= \| \sqrt{\lambda} D_x \ast u \|^2 + \| \sqrt{\lambda} D_y \ast u \|^2 \\
+        &= \| \sqrt{\lambda} D_x \ast u - 0 \|^2 + \| \sqrt{\lambda} D_y \ast u - 0 \|^2
+    \end{align*}
+    where
+    \[
+    D_x = \begin{pmatrix}
+    1 & -1
+    \end{pmatrix}, \qquad
+    D_y = \begin{pmatrix}
+    1 \\ -1
+    \end{pmatrix}
+    \]
+    Moreover, $\| u - v \|^2 = \| \delta \ast u - v \|^2$, where $\delta = \begin{pmatrix} 1 \end{pmatrix}$.
+
+    $D_x$ and $D_y$ are precisely the kernels that differentiate the image. So, we can use the function \texttt{resoud\_quad\_fourier} with parameters $(\sqrt{\lambda} D_x, \sqrt{\lambda} D_y, \delta)$ and $(0, 0, \texttt{img})$ to find the minimizer.
+
+    \subsubsection*{Question 2}
+    Décrire le résultat de ce débruitage lorsque $\lambda$ est très grand ou très petit.
+
+    \paragraph{Answer}
+    If $\lambda$ is very small, then the regularization has no effect, making the minimizer equal to the observed image:
+    \[
+        \lim_{\lambda \to 0} \| u - v \|^2 + \lambda \| \nabla u \|^2 = \| u - v \|^2 \implies \arg \min_u E_1(u) = v.
+    \]
+    If $\lambda$ is too big, then the data attachment term loses importance, making the image too regular (the gradient tends to 0). The result is a single-colored image, since there is no variation ($\nabla u = 0$).
+
+
+    \subsubsection*{Question 3}
+    Après avoir ajouté un bruit d’écart type $\sigma = 5$ à l’image de lena, trouver (par dichotimie) le paramètre $\lambda$ pour lequel $\| \tilde{u} - v \|^2 \sim \|u - v\|^2$. C’est-à-dire le paramètre pour lequel l’image reconstruite $\tilde{u}$ est à la même distance de l’image dégradée $v$ que ne l’est l’image parfaite. (on respecte la norme du bruit: La norme du bruit est connue même quand on ne connait pas l’image parfaite)
+
+    \paragraph{Answer}
+    The parameter found was $\lambda \approx 0.33081$.
+
+    \subsubsection*{Question 4}
+    Ecrire un algorithme pour trouver le paramètre $\lambda$ tel que $\| \tilde{u} - u \|^2$ soit minimale. (dans le cadre de ce TP on connait l’image parfaite u, on général on ne la connait pas). Commentaires?
+
+    \paragraph{Answer}
+    The parameter found was $\lambda \approx 0.11677$.
+    The obtained $\lambda$ is about half of the result from question 3. This might be because the original image has a lot of contours, and so the minimization of the error difference may not reflect the actual best restoration.
+
+
+    \section{Débruitage par variation totale}
+
+    \subsubsection*{Question 5}
+    Utiliser le programme \texttt{minimise\_TV\_gradient} pour différentes valeurs du pas de descente. Atteignez-vous toujours le même minimum d’énergie? (le programme renvoie l’évolution de l’énergie).
+
+    \paragraph{Answer}
+    Not all step sizes get to the same energy minimum. This happens because a step size too large may make the function diverge in the gradient descent algorithm.
+
+
+    \subsubsection*{Question 6}
+    Le programme \texttt{vartotale\_Chambolle} applique la méthodede \textbf{Chambolle} (expliquée dans le polycopié) au même problème posé par $E_2$. Utilisez ce programme et que constatez-vous quant à la vitesse de cette algorithme et sa précision (minimisation effective de $E_2$) par rapport à la descente de gradient.
+
+    \paragraph{Answer}
+    The function \texttt{vartotale\_Chambolle} returns the restored image almost instantly, while the gradient descent algorithm depends on the choice of the step size and the number of iterations.
+
+
+    \section{Comparaison}
+
+    \subsubsection*{Question 7}
+    Après avoir fixé une image bruitée par un bruit de 25. Trouver pour chacune des deux méthodes (TV et quadratique) le meilleur paramètre $\lambda$ et comparez qualitativement le résultat obtenu par les deux méthodes pour le débruitage.
+
+    \paragraph{Answer}
+    The best parameters for quadratic and TV regularization were $\lambda_\text{quad} \approx 1.17457$ and $\lambda_\text{TV} \approx 41.42943$.
+    Using the norm of the difference between the result of the restoration and the perfect image $u$, we obtain the following values: $\| u - \tilde{u}_\text{quad} \| \approx 5318$ and $\| u - \tilde{u}_\text{TV} \| \approx 4428$.
+    In conclusion, the TV regularization appears to yield better results.
+
+\end{document}

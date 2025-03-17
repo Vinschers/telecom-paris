@@ -1,0 +1,24 @@
+ IMA204 Active Contours TP 
+
+
+[1] REQUIRED Python packages:
+numpy 
+matplotlib
+IPython
+scikit-image
+ffmpeg
+
+Example of installation: conda install -c conda-forge ffmpeg-python  OR pip install ffmpeg-python
+
+
+[2] Recommended interactive display tool to visualise an image and get pixel coordinates along with pixel intensity value: 
+Pinta (on MacOS) 
+or 
+(BETTER) the local html tool provided: iview_IMA204.html
+
+[3] You are provided with a Jupyter Notebook to complete for your report and submit. 
+
+The submitted code needs to run smoothly as it will be ran for the evaluation. 
+
+VERY IMPORTANT: make sure to access in your code any new image assuming it is read from your local folder "/images_misc/XX", like some of the images provided to you.
+

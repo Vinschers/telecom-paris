@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\Solution{%
+  \textbf{Solution:}\\%
+}
+
+\title{Image: TP 3}
+\author{Felipe Scherer Vicentin}
+
+\begin{document}
+\maketitle
+
+\section{Détection de contours}
+\subsection{Filtre de gradient local par masque}
+
+\Problem{Rappelez l'intérêt du filtre de Sobel, par rapport au filtre différence, qui calcule une dérivée par la simple différence entre deux pixels voisins.}
+
+\Solution{The Sobel filter automatically applies a low-pass filter before calculating the gradient. This makes the contours more stable when the image has noise or blur.}
+
+\Problem{Est-il nécessaire de faire un filtre passe-bas de l’image avant d’utiliser le filtre de Sobel?}
+
+\Solution{No, since its kernel is built to already compute the low-pass filter before the gradient calculation.}
+
+\Problem{Le seuillage de la norme du gradient permet d'obtenir des contours.
+Commentez la qualité des contours obtenus (robustesse au bruit, continuité, épaisseur, position, \ldots) quand l'on fait varier ce seuil.}
+
+\Solution{The threshold applied to the gradient's norm can change how much information is retained in the contours.
+If the threshold is too low, then noise and regions that are not edges may be counted in the conteurs.
+If it is too big, then some edges are lost.
+In general, the smaller the threshold, the thicker the conteurs.
+The position of the contours, does not change though.}
+
+\subsection{Maxima du module du gradient dans la direction du gradient}
+
+\Problem{Rappeler la formule qui donne les points sélectionnés par cette fonction (cours)?}
+
+\Solution{First, we select the points whose gradient's norm is at least $\sigma_1$:
+$E_1 = \{\mathbf{x} \colon \vert \nabla I(\mathbf{x}) \vert \geq \sigma_1 \}$.
+Then, we filter $E_1$ by keeps the points that are connected to points whose gradient's norm is at least $\sigma_2$:
+$E_2 = \{\mathbf{x} \colon \vert \nabla I(\mathbf{x}) \vert \geq \sigma_2 \}$.}
+
+\Problem{Il est possible d'éliminer les contours dont la norme du gradient est inférieure à un seuil donné.
+Commentez les résultats obtenus en terme de position et de continuité des contours, et de robustesse au bruit en faisant varier ce seuil.}
+
+\Solution{The standard threshold used is $0.0001$. With such a threshold, most of the resulting image is comprised by noise and outliers that are not edges.
+By varing this parameter, we can filter out the noise and highlight the actual contours.}
+
+\Problem{Cherchez à fixer le seuil sur la norme de façon à obtenir un compromis entre robustesse au bruit et continuité des contours.}
+
+\Solution{It seems that a threshold of $0.2$ yields a good result, highlighting the edges and filtering out the noise of the image.}
+
+\subsection{Passage par zéro du laplacien}
+
+\Problem{Quel est l'effet du paramètre $\alpha$ sur les résultats?}
+
+\Solution{The bigger the parameter $\alpha$, the greater the strength of the low-pass filter.}
+
+\Problem{Sur l'image \texttt{cell.tif}, quelles sont les principales différences par rapport aux résultats fournis par les opérateurs vus précédemment?}
+
+\Solution{This segmentatios appears to leave the result with more noise. It also seems to highlight the interior of cells, instead of just their edges.}
+
+\Problem{Sur l'image \texttt{pyramide.tif}, comment est-il possible de supprimer les faux contours créés par cette approche?}
+
+\Solution{A simple solution is to increaste the threshold of the gradient ``lpima''.
+We can also increase the value of $\alpha$ since it reduces the smoothness of the image and, thus, makes the contours sharper.}
+
+\subsection{Adaptation en fonction de l'image}
+
+\Problem{Quel opérateur choisiriez-vous pour segmenter l'image \texttt{pyra-gauss.tif}?}
+
+\Solution{I would choose the sobel operator.}
+
+\Problem{Quels seraient les pré-traitements et les post-traitements à effectuer?}
+
+\Solution{For the pre-processing, using a low-pass filter to further decrease the presence of high-frequency noise makes the result better.
+For the post-processing, applying a threshold to the gradient is enough to correctly highlight the edges of the image.}
+
+\section{Segmentation par classification: K-moyennes}
+
+\subsection{Image à niveaux de gris}
+
+\Problem{Testez l'algorithme des k-moyennes sur l'image \texttt{cell.tif} pour une classification en 2 classes.
+Cette classification segmente-t-elle correctement les différents types de cellules? Si non, que proposez-vous?}
+
+\Solution{The segmentation is not completely correct.
+Many cells whose centre is lighter end up in a different class.
+To solve this, we could apply an enclosing morphological operator in the image before running the K-means algorithm.}
+
+\Problem{Testez les différentes possibilités pour initialiser les classes.
+Décrivez si possible ces différentes méthodes.}
+
+\Solution{If the random state is removed from the KMeans initialization, the initial positions of the clusters will change in each run of the algorithm.
+Indeed, depending on how the initial centroids are placed, the K-means algorithm may fail to identify the cells and the background.
+For instance, if the two initial centroids end up in extremely different colors, the cells are not detected at all.}
+
+\Problem{La classification obtenue est-elle stable (même position finale des centres des classes) avec une initialisation aléatoire? Testez sur différentes images à niveaux de gris et différents nombres de classes.}
+
+\Solution{The classification is not stable.
+Depending on the initial centroids and the number of classes, the result may change substantially.}
+
+\Problem{Quelles sont les difficultés rencontrées pour la segmentation des différentes fibres musculaires dans l'image \texttt{muscle.tif}?}
+
+\Solution{The simple classification based only on colors cannot correctly identify the fibers, since there is a lot of white parts in the cells.}
+
+\Problem{Expliquez pourquoi le filtrage de l'image originale (filtre de la moyenne ou filtre median) permet d'améliorer la classification.}
+
+\Solution{teste}
+
+\subsection{Image en couleur}
+
+\Problem{Testez l'algorithme sur l'image \texttt{fleur.tif} pour une classification en 10 classes, les centres des classes initiaux étant tirés aléatoirement.}
+
+\Solution{teste}
+
+\Problem{Commentez la dégradation de l'image quantifiée par rapport à l'image initiale.}
+
+\Solution{teste}
+
+\Problem{Quel est le nombre minimum de classes qui donne un rendu visuel similaire à celui de l'image codée sur 3 octets?}
+
+\Solution{teste}
+
+\section{Seuillage automatique: Otsu}
+
+\Problem{Dans le script \texttt{otsu.py} quel critère cherche-t-on à optimiser?}
+
+\Solution{teste}
+
+\Problem{Testez la méthode de Otsu sur différentes images à niveaux de gris, et commentez les résultats.}
+
+\Solution{teste}
+
+\Problem{Cette méthode permet-elle de seuiller correctement une image de norme du gradient?}
+
+\Solution{teste}
+
+\Problem{Modifiez ls script \texttt{otsu.py} pour traiter le problème à trois classes, i.e., la recherche de deux seuils.}
+
+\Solution{teste}
+
+\end{document}

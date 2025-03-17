@@ -1,0 +1,129 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\Solution{%
+  \textbf{Solution:}\\%
+}
+
+\parindent 0in
+\parskip 1em
+
+\title{Image: TP 1}
+\author{Felipe Scherer Vicentin}
+
+\begin{document}
+\maketitle
+
+\Problem Que fait gimp pour afficher l'image en plus grand?
+
+\Solution Gimp augmente la taille de chaque pixel dans l'écran de l'ordinateur. Si chaque pixel de l'image apparaît comme 4 pixel de l'écran, l'image sera plus grand.
+
+\Problem Quelle hypothèse pouvez-vous faire sur la génération de maison\_petit.tif?
+
+\Solution Il me semble que le méthode d'interpolation a été le responsable de la difference entre les deux images.
+
+\Problem Comprenez-vous pourquoi les deux positions extrêmes de ce boutons font, en fait, la même transformation?
+
+\Solution Parce que le spectre de la tente est circulaire. C'est-à-dire que une tente de -180° est égal à une tente de 180°.
+
+\Problem A quoi correspond la saturation (essayez-100\% et +100\%)?
+
+\Solution La saturation corresponde à la puissance de la tente. Une saturation -100\% signifie une puissance nulle de couleurs, i.e., une image sans couleurs (en gris).
+
+\Problem En considérant les niveaux de gris d'une image comme la réalisation d'une variable aléatoire dont la loi est l'histogramme de l'image, interprétez le résultat.
+
+\Solution L'application d'un filtre de bruit Gaussienne a fait la distribution de probabilités plus lisse. Les points où la plupart des gris était dans l'image original sont encore les plus probables, mais la transition entre les pics montre plus de gris.
+
+\Problem L'aspect global de l'image est-il modifié par l'application de fonctions croissantes?
+
+\Solution Le contraste change, mais l'aspect global reste le même.
+
+\Problem Que se passe-t-il si l'on applique une transformation non-croissante des niveaux de gris?
+
+\Solution Une transformation non-croissante fait apparaître des régions très sombres. Il me semble que quelques informations sont perdues à cause de ce assombrissement.
+
+\Problem Qu'observez-vous sur imequal, sur son histogramme et sur son histogramme cumulé?
+
+\Solution L'histogramme de imequal est beaucoup plus distribué que celle de im. La plupart des tons de gris étaient près du 0 e, maintenant, sont également distribués. Cette transformation peut être vu par l'histogramme cumulé, vu qu'il semble vraiment une ligne y = x. Ça montre que les tons sont plus ou moins bien distribués.
+
+\Problem Visualisez la valeur absolue de la différence des images, qu'observe-t-on. Même question après avoir donné à l'une des images l'histogramme de l'autre.
+
+\Solution La différence entre les deux images originaux est très notable. Presque tous les pixels ont un niveau de gris différente et, donc, leur difference est très évidant.
+
+Après avoir donné l'histogram de u à v, les deux images deviennent presque identiques. Leur difference absolute est quasiment totalement noir, parce que la difference est très petite.
+
+\Problem A-t-on un moyen plus simple d'obtenir le même résultat (donner le même histogramme aux deux images)?
+
+\Solution Nous pourrions changer le méthode de quantization de l'image plus claire. Si on exige que plus de photons soient détectés pour avoir le même ton de gris que l'image plus sombre, les histogrammes seront plus proches.
+
+\Problem Appliquez le même seuillage à une version bruitée de l'image originale et visualisez. Que constatez vous?
+
+\Solution Le seuillage après le bruit donne une impression meilleure. Il est possible de voir plus d'information avec le bruit. La concentration des pixels noires donne l'impression de différentes tons de gris.
+
+\Problem En considérant un pixel de niveau x dans l'image initiale, donnez la probabilité pour que ce pixel soit blanc après ajout de bruit et seuillage.
+
+\Solution Il est possible de calculer la probabilité comme montré:
+
+\begin{equation*}
+P(x + N > 128) = P(N > 128 - x) = \int_{128 - x}^{\infty} f(t) dt
+\end{equation*}
+
+\Problem Pourquoi l'image détramée ressemble-t-elle plus à l'image de départ que l'image simplement seuillée?
+
+\Solution La probabilité d'un pixel d'être blanc est proportionnelle à son ton de gris. Ainsi, les plus claires regions d'image originale deviennent les régions où il y a beaucoup de pixels blanches. Le même c'est vrai pour les régions plus sombres.
+
+\Problem La distribution des différences vous semble-t-elle obéir a une loi gaussienne? Pourquoi?
+
+\Solution Oui, la distribution semble une loi gaussienne. C'est logique parce que les images sont quasi constantes par morceaux. Ainsi, nous espérions les différences très proches de 0 et, parfois, plus grandes. La probabilité d'avoir deux pixels adjacentes très différentes est tellement petit, tandis qu'avoir une difference de 0 est beaucoup plus probable.
+
+\Problem Quelle aurait été la forme de l'histogramme si l'on avait considéré la différences entre pixels plus éloignés?
+
+\Solution Je pense que l'histogramme serait encore une Gaussienne, mais avec une plus grande variance.
+
+\Problem Que constatez-vous? Qu'en déduisez-vous par rapport au spectre d'une image?
+
+\Solution Le spectre de Fourier est tellement plus grande au centre (c'est-à-dire des baisse fréquences). Ça, c'est la raison pour laquelle on doit prendre le log du spectre. Ainsi, nous pouvons le voir plus détaillé.
+
+\Problem Comment influe l'option hamming sur le spectre de l'image? 
+
+\Solution En ajoutant l'option hamming, le spectre de l'image devient plus ``pure'' par rapport à l'image elle-même. La presence de bordes lorsque la transformée est fait faire apparaitre des rayons horizontales et verticales dans le spectre qui correspondent aux bordes.
+
+\Problem Visualisez le spectre de l'image synthétique rayures.tif. Que constatez-vous? Peut-on retrouver les caractéristiques des rayures de l'image à partir de son spectre?
+
+\Solution Le spectre montre plusieurs rayons à un angle de 45°. Cela apparait parce que dans l'image, il y a une separation entre la région noire et la région blanche qui forme une ligne de 135°.
+Plus, les colunes verticales blanches e gris à l'image original apparaissent dans le spectre comme un grand rayon qui traverse horizontalement.
+
+\Problem Expliquez la différence entre la visualisation avec et sans l'option hamming?
+
+\Solution Sans l'option hamming, des rayons verticales ont été ajoutés au spectre de Fourier grâce aux bordes.
+D'ailleurs, le rayon horizontale a été plus acentue, encore grace aux bordes.
+
+\Problem Quel effet a le sous-échantillonnage sur le spectre?
+
+\Solution Il me semble que le sous-échantillonnage fait apparaitre des fréquences manquants sur le spectre de Fourier.
+Par contre, le spectre d'une image bien échantiollonnée semble plus remplie.
+
+\Problem Visualisez l'image résultante, ainsi que son spectre. Que constatez-vous? Mêmes questions en utilisant la commande filtergauss.
+
+\Solution L'image devient plus sombre et floué. Son spectre est maintenant un carré sur les basses fréquences et complètement noir sur les hautes fréquences.
+Avec le filter Gaussienne, le flou est plus doux. Le spectre est plus sombre proche des hautes fréquences, mais il y a une transition beaucoup plus souple.
+
+\Problem Quelle différence constatez-vous, en particulier quelle conséquence a la discontinuité de la transformée de Fourier sur la vitesse de décroissance du filtre spatial correspondant?
+
+\Solution Les masques sont similaires aux spectres visualizes après chaque filtrage. C'est logique vu que la convolution dans le domaine spatial corresponde à une multiplication au domaine de Fourier.
+Donc, les filtres sont quasi littéralement une multiplication pixel-à-pixel entre le spectre de Fourier et les masques présentés.
+
+\end{document}

@@ -1,0 +1,7 @@
+#Questions
+
+How is the variance from procrustes alignment computed?
+
+Why is the shape space an ellipsoid? Is this specific for resistor images or does this happen with any type of shape?
+
+What happens if the initial guess is severely misaligned (e.g. the image is upside down)?

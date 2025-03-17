@@ -1,0 +1,7 @@
+numpy
+jupyter
+matplotlib
+scikit-image
+torchvision
+torchaudio
+imagecodecs

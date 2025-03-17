@@ -1,0 +1,3 @@
+[submodule "electives/queueing-theory"]
+	path = electives/queueing-theory
+	url = https://github.com/Vinschers/queueing-theory

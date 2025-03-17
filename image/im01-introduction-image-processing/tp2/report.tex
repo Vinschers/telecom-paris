@@ -1,0 +1,74 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\Solution{%
+  \textbf{Solution:}\\%
+}
+
+\parindent 0in
+\parskip 1em
+
+\title{Image: TP 2}
+\author{Felipe Scherer Vicentin}
+
+\begin{document}
+\maketitle
+
+\Problem Quelle différence y-a-t-il entre la méthode à plus proche voisin et la méthode bilinéaire?
+
+\Solution The bilinear interpolation makes the image smoother, since it considers the average of the surrounding pixels of each interpolation.
+
+\Problem Que constatez-vous sur une image qui aurait subi huit rotations de 45 degrés (en bilinéaire et en plus proche voisin)?
+
+\Solution In both cases, the image has undergone some loss in information. In the neigherst neighbour case, the image acquires a lot of noise and we can also observe aliasing effects. In the bilinear case, the image becomes more blurry.
+
+\Problem Que constatez-vous si vous appliquez la rotation avec un facteur de zoom inférieur à 1 (par exemple $\frac{1}{2}$)? Qu'aurait-il fallu faire pour atténuer l'effet constaté?
+
+\Solution If we apply a zoom lower than 1, then the resulting image appears with a lot of aliasing. To solve this issue, we can apply a low-passing filter before the rotation. This way, the image gets blurred, but without aliasing.
+
+\Problem Expliquer le rapport entre la taille du noyau (size) renvoyé par \texttt{get\_gau\_ker} et le paramètre cette commande.
+
+\Solution The bigger the parameter $s$, the greater the size of the Gaussian kernel. In particular, the size of this kernel is always an odd number squared.
+
+\Problem Après avoir ajouté du bruit à une image simple telle que \texttt{pyramide.tif} ou \texttt{carre\_orig.tif} et avoir filtré le résultat avec des filtres linéaires, expliquez comment on peut evaluer (sur des images aussi simples) la quantité de bruit résiduel (la commande \texttt{var\_image} donne la variance d'une partie d'une image).
+
+\Solution In the original image, the variation of a rectangle in the top left corner is 0. After applying the noise to the image, the image's variation in this same rectangle is very high (around 100). Finally, after a linear filter of size 5, the variation gets substantially reduced, but it is still not 0 (around 10).
+
+\Problem Appliquer un filtrage médian à une image bruitée et comparer le résultat avec un filtrage linéaire.
+
+\Solution Using the image \texttt{pyrabruit.tif}, the noise is considerably reduced with the linear filter. However, the noise disappears completely when using the median filter. It seems that the median filter is better when dealing with a ``salt-and-pepper'' noise.
+
+\Problem Faites une comparaison linéaire/médian sur l'image \texttt{pyra-impulse.tif}. Que constatez-vous? Expliquer la différence de comportement entre filtrage linéaire et médian sur le point lumineux situé en haut à droite de l'image \texttt{carre\_orig.tif}.
+
+\Solution Like before, even though the linear filter reduces the noise, the image not only remais with some noise, but also gets blurred. With the median filter, the noise disappears and the image keeps sharp. With the image \texttt{carre\_orig.tif}, however, it seems that the median filter keeps the image sharp but changes its borders (the square is now round on the edges) while the linear filter keeps the border's shape and blurs the resulting image.
+
+\Problem Appliquer un filtre linéaire à une image puis utilisez la fonction \texttt{filtre\_inverse}. Que constatez-vous? Que se passe-t-il si vous ajoutez très peu de bruit à l'image floutée avant de la restaurer par la commade précédente?
+
+\Solution If no noise is added to the image, the inverse filter works as expected, restoring the image completely. However, if noise is added to the filtered image, the inverse filter completely destroys the original image.
+
+\Problem Comment pouvez-vous déterminer le noyau de convolution qu'a subi l'image \texttt{carre\_flou.tif}?
+
+\Solution We can see that a small white pixel in the original image has turned into a side "T" (the matrix of pixels would be [0, 0, 1], [1, 1, 1], [0, 0, 1]). If we apply this sideways "T" mask to the inverse filter, we are able to obtain the original image.
+
+\Problem Faites varier le parametre $\lambda$ et commentez les résultats.
+
+\Solution The higher the parameter $\lambda$, the bigger the effect of the Wiener restoration. If we add a noise with variance 10, then we would have to set $\lambda$ to something in the order of $50$ to get a good restoration of the image.
+
+\Problem Pour une image simple telle que \texttt{carre\_orig.tif} et un bruit d'écart-type 5, trouver la taille du noyau constant qui réduit le bruit dans les mêmes proportions qu'un filtre médian circulaire de rayon 4.
+
+\Solution We can find the corresponding constant kernel filter by calculating the variance of the image. First, compute the variance with the median filter of radius 4. Then, compare with the variances obtained for various sizes of constant kernels. Finally, we find that the size that most resembles the variance of the median filter is 2.
+
+\end{document}
