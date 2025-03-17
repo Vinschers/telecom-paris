@@ -1,0 +1,7 @@
+curl -X POST http://localhost:8000/ref \
+     -H "Content-Type: application/json" \
+     -d '{
+           "title": "My Imaginary Title",
+           "authors": ["John Doe", "Jane Doe"],
+           "year": "2025"
+         }'

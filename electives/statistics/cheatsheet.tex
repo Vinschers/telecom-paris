@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage[a4paper, margin=0.5cm]{geometry} % Adjust margin size here
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ c c c c c c c c } % 'c' for center alignment, '|' for vertical lines
+        Distribution & Type & PDF & CDF & $\mathbb{E}[X]$ & $\mathrm{Var}(X)$ & $I_X(\theta)$ & $I_n(\theta)$ \\
+        \toprule
+        Uniform  & Discrete  & Data 9   & Data 10  & Data 11  & Data 12  & Data 13  & Data 14  \\
+        \midrule
+        Bernoulli & Discrete  & Data 9   & Data 10  & Data 11  & Data 12  & Data 13  & Data 14  \\
+        \midrule
+        Binomial & Discrete  & Data 2   & Data 3   & Data 4   & Data 5   & Data 6   & Data 7   \\
+        \midrule
+        Poisson & Discrete  & Data 2   & Data 3   & Data 4   & Data 5   & Data 6   & Data 7   \\
+        \midrule
+        Uniform  & Continuous  & Data 9   & Data 10  & Data 11  & Data 12  & Data 13  & Data 14  \\
+        \midrule
+        Normal  & Continuous  & Data 2   & Data 3   & Data 4   & Data 5   & Data 6   & Data 7   \\
+        \midrule
+        Exponential  & Continuous  & Data 2   & Data 3   & Data 4   & Data 5   & Data 6   & Data 7   \\
+        \midrule
+        Normal  & Vectorial  & Data 2   & Data 3   & Data 4   & Data 5   & Data 6   & Data 7   \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{document}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Pie Chart Demo</title>
+    </head>
+    <body>
+        <div id="toolbar">
+            <!-- The 5 main buttons -->
+            <button id="SHOW_B">show txt</button>
+            <button id="ADD_B">add element</button>
+            <button id="REMOVE">remove element</button>
+            <button id="CLEAR">clear</button>
+            <button id="RESTORE">restore</button>
+            <!-- The piechart button (question 6) -->
+            <button id="PIE">show piechart</button>
+            <button id="LOCAL_PIE">show local piechart</button>
+        </div>
+
+        <!-- The add form (hidden by default, we show it from JS) -->
+        <div id="addForm" style="display: none">
+            <label>Title: <input type="text" id="titleTF" /></label><br />
+            <label>Color: <input type="text" id="colorTF" /></label><br />
+            <label>Value: <input type="number" step="any" id="valueTF" /></label
+            ><br />
+            <button id="DOADD">Add to JSON</button>
+        </div>
+
+        <!-- The remove form (hidden by default) -->
+        <div id="removeForm" style="display: none">
+            <label>Index: <input type="number" id="indexTF" /></label><br />
+            <button id="SENDREM">Remove from JSON</button>
+        </div>
+
+        <!-- The main display area -->
+        <div
+            id="MAINSHOW"
+            style="border: 1px solid #ccc; margin-top: 10px; padding: 5px"
+        >
+            <!-- Output goes here -->
+        </div>
+
+        <script src="test2.js"></script>
+    </body>
+</html>

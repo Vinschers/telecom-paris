@@ -1,0 +1,6 @@
+curl -X PUT http://localhost:8000/ref/1234567 \
+     -H "Content-Type: application/json" \
+     -d '{
+           "title": "Updated Title for Key 1234567",
+           "month": "dec"
+         }'

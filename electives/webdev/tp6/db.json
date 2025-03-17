@@ -1,0 +1,36 @@
+[
+    {
+        "key": "8000304",
+        "title": "Assessment of Fetal Exposure...",
+        "journal": "IEEE Journal of Electromagnetics, RF and ...",
+        "year": "2017",
+        "month": "aug",
+        "keywords": "Fetus Dosimetry, Specific absorption rate...",
+        "lang": "en",
+        "authors": [
+            "E. Chiaramello",
+            "M. Parazzini",
+            "S. Fiocchi",
+            "P. Ravazzani",
+            "j. wiart"
+        ],
+        "category": "article",
+        "state": "published",
+        "dept": "comelec",
+        "group": "rfm"
+    },
+    {
+        "key": "1234567",
+        "title": "Another Sample Publication",
+        "journal": "Some Journal",
+        "year": "2021",
+        "month": "jan",
+        "keywords": "Some keywords",
+        "lang": "en",
+        "authors": ["Alice Smith", "Bob Johnson"],
+        "category": "article",
+        "state": "published",
+        "dept": "exampledept",
+        "group": "examplegroup"
+    }
+]

@@ -1,0 +1,6 @@
+[
+    { "title": "foo", "color": "red", "value": 20 },
+    { "title": "bar", "color": "ivory", "value": 100 },
+    { "title": "Luigi", "color": "green", "value": 1 },
+    { "title": "Felipe", "color": "blue", "value": 105 }
+]

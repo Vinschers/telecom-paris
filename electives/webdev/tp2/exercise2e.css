@@ -1,0 +1,19 @@
+#d1 {
+    border: 1px solid black;
+    padding: 11px;
+}
+
+img {
+    float: left;
+    margin: 14px;
+}
+
+.ad {
+    background-color: grey;
+    margin: 10px;
+    position: fixed;
+    top: 119px;
+    left: 119px;
+    width: 405px;
+    height: 405px;
+}
