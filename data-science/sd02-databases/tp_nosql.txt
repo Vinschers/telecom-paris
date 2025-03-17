@@ -1,0 +1,9 @@
+MATCH (author {lastname: "Shakespeare"})-[: WROTE_PLAY]->(play)<-[: PRODUCTION_OF]-(prod)<-[: PERFORMANCE_OF]-(performance)-[: VENUE]->(theatre {name: "Theatre Royal"})-[: STREET]->(street)-[: CITY]->(city {name: "Newcastle"}) RETURN performance
+
+MATCH (author {lastname: "Shakespeare"})-[: WROTE_PLAY]->(play)<-[: PRODUCTION_OF]-(prod)<-[: PERFORMANCE_OF]-(performance WHERE performance.date >= 16080000)-[: VENUE]->(theatre {name: "Theatre Royal"})-[: STREET]->(street)-[: CITY]->(city {name: "Newcastle"}) RETURN performance
+
+MATCH (author {lastname: "Shakespeare"})-[: WROTE_PLAY]->(play)<-[: PRODUCTION_OF]-(prod)<-[: PERFORMANCE_OF]-(performance)-[: VENUE]->(theatre {name: "Theatre Royal"})-[: STREET]->(street)-[: CITY]->(city {name: "Newcastle"}) RETURN COUNT(performance)
+
+MATCH (play)<-[: PRODUCTION_OF]-(prod)<-[: PERFORMANCE_OF]-(performance) WITH play, COUNT(performance) as count_performances RETURN play, count_performances ORDER BY count_performances DESC
+
+MATCH (author {lastname: "Shakespeare"})-[r: WROTE_PLAY]->(play) RETURN play ORDER BY r.year

@@ -1,0 +1,37 @@
+objid = Object Identifier
+ra = J2000 Right Ascension (r-band)
+dec = J2000 Declination (r-band)
+
+Right ascension (abbreviated RA) is the angular distance measured eastward along the celestial equator from the Sun at the March equinox to the hour circle of the point above the earth in question. When paired with declination (abbreviated dec), these astronomical coordinates specify the direction of a point on the celestial sphere (traditionally called in English the skies or the sky) in the equatorial coordinate system.
+
+u = better of DeV/Exp magnitude fit
+g = better of DeV/Exp magnitude fit
+r = better of DeV/Exp magnitude fit
+i = better of DeV/Exp magnitude fit
+z = better of DeV/Exp magnitude fit
+
+The Thuan-Gunn astronomic magnitude system. u, g, r, i, z represent the response of the 5 bands of the telescope.
+
+run = Run Number
+rereun = Rerun Number
+camcol = Camera column
+field = Field number
+
+Run, rerun, camcol and field are features which describe a field within an image taken by the SDSS. A field is basically a part of the entire image corresponding to 2048 by 1489 pixels. A field can be identified by: - run number, which identifies the specific scan, - the camera column, or "camcol," a number from 1 to 6, identifying the scanline within the run, and - the field number. The field number typically starts at 11 (after an initial rampup time), and can be as large as 800 for particularly long runs. - An additional number, rerun, specifies how the image was processed.
+
+View "SpecObj"
+specobjid = Object Identifier
+class = object class (galaxy, star or quasar object)
+The class identifies an object to be either a galaxy, star or quasar. This will be the response variable which we will be trying to predict.
+
+redshift = Final Redshift
+plate = plate number
+mjd = MJD of observation
+fiberid = fiber ID
+In physics, redshift happens when light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum.
+
+Each spectroscopic exposure employs a large, thin, circular metal plate that positions optical fibers via holes drilled at the locations of the images in the telescope focal plane. These fibers then feed into the spectrographs. Each plate has a unique serial number, which is called plate in views such as SpecObj in the CAS.
+
+Modified Julian Date, used to indicate the date that a given piece of SDSS data (image or spectrum) was taken.
+
+The SDSS spectrograph uses optical fibers to direct the light at the focal plane from individual objects to the slithead. Each object is assigned a corresponding fiberID.
