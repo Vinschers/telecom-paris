@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+
+\bibitem{khened}
+M.~Khened, V.~Alex, and G.~Krishnamurthi, ``Densely connected fully convolutional network for short-axis cardiac cine mr image segmentation and heart diagnosis using random forest,'' in {\em Statistical Atlases and Computational Models of the Heart. ACDC and MMWHS Challenges} (M.~Pop, M.~Sermesant, P.-M. Jodoin, A.~Lalande, X.~Zhuang, G.~Yang, A.~Young, and O.~Bernard, eds.), (Cham), pp.~140--151, Springer International Publishing, 2018.
+
+\bibitem{bernard}
+O.~Bernard, A.~Lalande, C.~Zotti, F.~Cervenansky, X.~Yang, P.-A. Heng, I.~Cetin, K.~Lekadir, O.~Camara, M.~A. Gonzalez~Ballester, G.~Sanroma, S.~Napel, S.~Petersen, G.~Tziritas, E.~Grinias, M.~Khened, V.~A. Kollerathu, G.~Krishnamurthi, M.-M. Rohé, X.~Pennec, M.~Sermesant, F.~Isensee, P.~Jäger, K.~H. Maier-Hein, P.~M. Full, I.~Wolf, S.~Engelhardt, C.~F. Baumgartner, L.~M. Koch, J.~M. Wolterink, I.~Išgum, Y.~Jang, Y.~Hong, J.~Patravali, S.~Jain, O.~Humbert, and P.-M. Jodoin, ``Deep learning techniques for automatic mri cardiac multi-structures segmentation and diagnosis: Is the problem solved?,'' {\em IEEE Transactions on Medical Imaging}, vol.~37, no.~11, pp.~2514--2525, 2018.
+
+\bibitem{isensee}
+F.~Isensee, P.~F. Jaeger, P.~M. Full, I.~Wolf, S.~Engelhardt, and K.~H. Maier-Hein, ``Automatic cardiac disease assessment on cine-mri via time-series segmentation and domain specific features,'' in {\em Statistical Atlases and Computational Models of the Heart. ACDC and MMWHS Challenges} (M.~Pop, M.~Sermesant, P.-M. Jodoin, A.~Lalande, X.~Zhuang, G.~Yang, A.~Young, and O.~Bernard, eds.), (Cham), pp.~120--129, Springer International Publishing, 2018.
+
+\end{thebibliography}

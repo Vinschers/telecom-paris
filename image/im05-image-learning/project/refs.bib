@@ -1,0 +1,94 @@
+@inproceedings{khened,
+    author = "Khened, Mahendra and Alex, Varghese and Krishnamurthi, Ganapathy",
+    editor = "Pop, Mihaela and Sermesant, Maxime and Jodoin, Pierre-Marc and
+              Lalande, Alain and Zhuang, Xiahai and Yang, Guang and Young,
+              Alistair and Bernard, Olivier",
+    title = "Densely Connected Fully Convolutional Network for Short-Axis
+             Cardiac Cine MR Image Segmentation and Heart Diagnosis Using Random
+             Forest",
+    booktitle = "Statistical Atlases and Computational Models of the Heart. ACDC
+                 and MMWHS Challenges",
+    year = "2018",
+    publisher = "Springer International Publishing",
+    address = "Cham",
+    pages = "140--151",
+    abstract = "In this paper, we propose a fully automatic method for
+                segmentation of left ventricle, right ventricle and myocardium
+                from cardiac Magnetic Resonance (MR) images using densely
+                connected fully convolutional neural network. Dense Convolutional
+                neural network (DenseNet) facilitates multi-path flow for
+                gradients between layers during training by back-propagation and
+                feature propagation. DenseNet also encourages feature reuse {\&}
+                thus substantially reduces the number of parameters while
+                maintaining good performance, which is ideal in scenarios with
+                limited data. The training data was subjected to Fourier analysis
+                and classical computer vision (CV) techniques for Region of
+                Interest (ROI) extraction. The parameters of the network were
+                optimized by training with a dual cost function i.e. weighted
+                cross-entropy and Dice co-efficient. For the task of automated
+                heart diagnosis, cardiac parameters such as ejection fraction,
+                volumes of ventricles etc. where calculated from segmentation
+                masks predicted by the network at the end systole and diastole
+                phases. Further these parameters were used as features to train a
+                Random forest classifier. On the exclusively held-out test set
+                (10{\%} of training set) the proposed method for segmentation
+                task achieved a mean dice score of 0.92, 0.87 and 0.86 for left
+                ventricle, right ventricle and myocardium respectively. For
+                automated cardiac disease diagnosis, the Random Forest classifier
+                achieved an accuracy of 90{\%}.",
+    isbn = "978-3-319-75541-0",
+}
+
+
+@article{bernard,
+    author = {Bernard, Olivier and Lalande, Alain and Zotti, Clement and
+              Cervenansky, Frederick and Yang, Xin and Heng, Pheng-Ann and Cetin,
+              Irem and Lekadir, Karim and Camara, Oscar and Gonzalez Ballester,
+              Miguel Angel and Sanroma, Gerard and Napel, Sandy and Petersen,
+              Steffen and Tziritas, Georgios and Grinias, Elias and Khened,
+              Mahendra and Kollerathu, Varghese Alex and Krishnamurthi, Ganapathy
+              and Rohé, Marc-Michel and Pennec, Xavier and Sermesant, Maxime and
+              Isensee, Fabian and Jäger, Paul and Maier-Hein, Klaus H. and Full,
+              Peter M. and Wolf, Ivo and Engelhardt, Sandy and Baumgartner,
+              Christian F. and Koch, Lisa M. and Wolterink, Jelmer M. and Išgum,
+              Ivana and Jang, Yeonggul and Hong, Yoonmi and Patravali, Jay and
+              Jain, Shubham and Humbert, Olivier and Jodoin, Pierre-Marc},
+    journal = {IEEE Transactions on Medical Imaging},
+    title = {Deep Learning Techniques for Automatic MRI Cardiac Multi-Structures
+             Segmentation and Diagnosis: Is the Problem Solved?},
+    year = {2018},
+    volume = {37},
+    number = {11},
+    pages = {2514-2525},
+    keywords = {Machine learning;Magnetic resonance imaging;Myocardium;Image
+                segmentation;Task analysis;Biomedical imaging;Heart;Cardiac
+                segmentation and diagnosis;deep learning;MRI;left and right
+                ventricles;myocardium},
+    doi = {10.1109/TMI.2018.2837502},
+}
+
+@InProceedings{isensee,
+author="Isensee, Fabian
+and Jaeger, Paul F.
+and Full, Peter M.
+and Wolf, Ivo
+and Engelhardt, Sandy
+and Maier-Hein, Klaus H.",
+editor="Pop, Mihaela
+and Sermesant, Maxime
+and Jodoin, Pierre-Marc
+and Lalande, Alain
+and Zhuang, Xiahai
+and Yang, Guang
+and Young, Alistair
+and Bernard, Olivier",
+title="Automatic Cardiac Disease Assessment on cine-MRI via Time-Series Segmentation and Domain Specific Features",
+booktitle="Statistical Atlases and Computational Models of the Heart. ACDC and MMWHS Challenges",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="120--129",
+abstract="Cardiac magnetic resonance imaging improves on diagnosis of cardiovascular diseases by providing images at high spatiotemporal resolution. Manual evaluation of these time-series, however, is expensive and prone to biased and non-reproducible outcomes. In this paper, we present a method that addresses named limitations by integrating segmentation and disease classification into a fully automatic processing pipeline. We use an ensemble of UNet inspired architectures for segmentation of cardiac structures such as the left and right ventricular cavity (LVC, RVC) and the left ventricular myocardium (LVM) on each time instance of the cardiac cycle. For the classification task, information is extracted from the segmented time-series in form of comprehensive features handcrafted to reflect diagnostic clinical procedures. Based on these features we train an ensemble of heavily regularized multilayer perceptrons (MLP) and a random forest classifier to predict the pathologic target class. We evaluated our method on the ACDC dataset (4 pathology groups, 1 healthy group) and achieve dice scores of 0.945 (LVC), 0.908 (RVC) and 0.905 (LVM) in a cross-validation over the training set (100 cases) and 0.950 (LVC), 0.923 (RVC) and 0.911 (LVM) on the test set (50 cases). We report a classification accuracy of {\$}{\$}94 {\backslash}{\%}{\$}{\$}94{\%}on a training set cross-validation and {\$}{\$}92{\backslash}{\%}{\$}{\$}92{\%}on the test set. Our results underpin the potential of machine learning methods for accurate, fast and reproducible segmentation and computer-assisted diagnosis (CAD).",
+isbn="978-3-319-75541-0"
+}
+
