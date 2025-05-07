@@ -1,0 +1,62 @@
+PMID- 31998756
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20240329
+IS  - 2297-055X (Print)
+IS  - 2297-055X (Electronic)
+IS  - 2297-055X (Linking)
+VI  - 6
+DP  - 2019
+TI  - Machine Learning Approaches for Myocardial Motion and Deformation Analysis.
+PG  - 190
+LID - 10.3389/fcvm.2019.00190 [doi]
+LID - 190
+AB  - Information about myocardial motion and deformation is key to differentiate 
+      normal and abnormal conditions. With the advent of approaches relying on data 
+      rather than pre-conceived models, machine learning could either improve the 
+      robustness of motion quantification or reveal patterns of motion and deformation 
+      (rather than single parameters) that differentiate pathologies. We review machine 
+      learning strategies for extracting motion-related descriptors and analyzing such 
+      features among populations, keeping in mind constraints specific to the cardiac 
+      application.
+CI  - Copyright © 2020 Duchateau, King and De Craene.
+FAU - Duchateau, Nicolas
+AU  - Duchateau N
+AD  - CREATIS, CNRS UMR 5220, INSERM U1206, Université, Lyon, France.
+FAU - King, Andrew P
+AU  - King AP
+AD  - School of Biomedical Engineering and Imaging Sciences, King's College London, 
+      London, United Kingdom.
+FAU - De Craene, Mathieu
+AU  - De Craene M
+AD  - Philips Research Paris, Suresnes, France.
+LA  - eng
+GR  - WT_/Wellcome Trust/United Kingdom
+PT  - Journal Article
+PT  - Review
+DEP - 20200109
+PL  - Switzerland
+TA  - Front Cardiovasc Med
+JT  - Frontiers in cardiovascular medicine
+JID - 101653388
+PMC - PMC6962100
+OTO - NOTNLM
+OT  - cardiac imaging
+OT  - computer-aided diagnosis
+OT  - machine learning
+OT  - myocardial motion
+OT  - myocardial strain
+EDAT- 2020/01/31 06:00
+MHDA- 2020/01/31 06:01
+PMCR- 2019/01/01
+CRDT- 2020/01/31 06:00
+PHST- 2019/10/14 00:00 [received]
+PHST- 2019/12/12 00:00 [accepted]
+PHST- 2020/01/31 06:00 [entrez]
+PHST- 2020/01/31 06:00 [pubmed]
+PHST- 2020/01/31 06:01 [medline]
+PHST- 2019/01/01 00:00 [pmc-release]
+AID - 10.3389/fcvm.2019.00190 [doi]
+PST - epublish
+SO  - Front Cardiovasc Med. 2020 Jan 9;6:190. doi: 10.3389/fcvm.2019.00190. eCollection 
+      2019.
